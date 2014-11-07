@@ -1,13 +1,10 @@
 //TODO: Please write code in this file.
 
-function printInventory(inputs) {
+var printInventory = function(inputs){
     printTime();
-    // for(var i=0; i<inputs.length, i++){
-    //     isWeightedFood(inputs[i]);
-    //     parseSymbol(inputs[i]);
-    // }
-  // //  var purchasedItems = parsePurchasedItems(inputs);
     console.log(formattedDateString);
+    parsePurchasedItems(inputs);
+
 }
 
 function printTime(){
@@ -53,21 +50,22 @@ function parseSymbol(input) {
 
 function parsePurchasedItems(inputs){
     var purchasedItems = {};
-    for (var i=0; i <inputs.length, i++){
+    for (var i=0; i <inputs.length; i++){
         var barCode = inputs[i];
         var itemAmount = 1;
 
         if (isWeightedFood(inputs[i])) {
-            barCode = parseSymbol(inputs[i]][0];
-            itemAmount = parseSymbol(inputs[i]][1];
+            barCode = parseSymbol(inputs[i])[0];
+            itemAmount = parseSymbol(inputs[i])[1];
         }
 
-        if (purchasedItems.hasOwnProperty(barcode)){
+        if (purchasedItems.hasOwnProperty(barCode)){
             purchasedItems[barCode] += itemAmount;
         }
         else{
             purchasedItems[barCode] = itemAmount;
         }
     }
+    console.log(purchasedItems);
     return purchasedItems;
 }
